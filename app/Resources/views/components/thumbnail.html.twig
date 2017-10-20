@@ -1,0 +1,19 @@
+<div class="row">
+    {% for image in images %}
+
+        <div class="col-md-7 thumb">
+            <div class="thumbnail">
+                <a href="{{ path('image_detail', {'id': image.id}) }}">
+                    <img class="img-responsive" src="{{ image.getWebPath | imagine_filter('explore') }}" />
+                </a>
+
+                {% include "components/caption.html.twig" with {'image': image} %}
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+
+<div class="navigation text-center">
+    {{ knp_pagination_render(images) }}
+</div>

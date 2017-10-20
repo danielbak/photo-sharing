@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'users_image' %}
+
+{% block main %}
+
+    {% include "components/thumbnail.html.twig" with {'images': images} %}
+
+{% endblock %}

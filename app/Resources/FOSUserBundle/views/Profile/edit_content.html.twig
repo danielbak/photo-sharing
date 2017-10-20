@@ -1,0 +1,27 @@
+{% form_theme form 'form/fields.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="col-sm-2">
+        {% if form.vars.value.getWebPath %}
+            <img src="{{ form.vars.value.getWebPath | imagine_filter('profile') }}">
+        {% endif %}
+    </div>
+
+    <div class="col-sm-4">
+
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'novalidate': 'novalidate'} }) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.profilePicture) }}
+        {{ form_row(form.locale) }}
+        {{ form_row(form.timezone) }}
+
+        <div>
+            <input type="submit" class="btn btn-default btn-block" value="{{ 'profile.edit.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+
+    </div>
+</div>

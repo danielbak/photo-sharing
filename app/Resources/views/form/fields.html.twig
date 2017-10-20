@@ -1,0 +1,46 @@
+
+{% block _image_tags_entry_widget %}
+
+    <div class="entry input-group input-group-sm input-group-responsive">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        <span class="input-group-btn">
+            <button class="btn btn-success btn-danger" type="button">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+    </div>
+
+{% endblock %}
+
+
+{% block form_row %}
+    {% spaceless %}
+        <div class="form-group {% if not form.vars.valid %}has-error{% endif %}">
+            {{ form_label(form, null, { 'label_attr': {'class': 'control-label'} }) }}
+            {{ form_widget(form, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <ul class="list-unstyled">
+                {% for error in errors %}
+                    <li><label class="help-block text-danger">{{ error.message }}</label></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+
+{% block file_row %}
+    <div class="form-group">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
